@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: hicham-share
+spec:
+  capacity:
+    storage: 50Gi
+  accessModes:
+  - ReadWriteMany
+  nfs:
+    path: /share1
+    server: 10.171.170.10
+    
+    
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: hicham-claim
+spec:
+  accessModes:
+  - ReadWriteMany
+  storageClassName: ""
+  volumeName: hicham-share
+  resources:
+    requests:
+      storage: 50Gi
+      
+      
