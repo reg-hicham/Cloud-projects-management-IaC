@@ -19,3 +19,11 @@ spec:
         image: omnidbteam/omnidb
         ports:
         - containerPort: 8000
+        volumeMounts:
+        - name: pv-data
+          mountPath: /
+          subPath: omnidb
+      volumes:
+      - name: pv-data
+        persistentVolumeClaim:
+          claimName: hicham-claim-omnidb
