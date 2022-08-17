@@ -32,3 +32,4 @@ spec:
       - name: pv-data
         persistentVolumeClaim:
           claimName: hicham-claim
+          readOnly: false
