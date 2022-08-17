@@ -24,9 +24,9 @@ spec:
           subPath: omnidb        
       containers:
       - name: omnidb
-        image: taivokasper/omnidb
+        image: omnidbteam/omnidb
         ports:
-        - containerPort: 8080
+        - containerPort: 8000
         volumeMounts:
         - name: pv-data
           mountPath: /etc/omnidb
