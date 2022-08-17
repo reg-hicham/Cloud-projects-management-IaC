@@ -21,7 +21,7 @@ spec:
         - containerPort: 8000
         volumeMounts:
         - name: pv-data
-          mountPath: /
+          mountPath: /home/omnidb/.omnidb/omnidb-server
           subPath: omnidb
       volumes:
       - name: pv-data
