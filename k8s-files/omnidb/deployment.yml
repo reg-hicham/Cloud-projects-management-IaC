@@ -14,6 +14,14 @@ spec:
       labels:
         app: omnidb
     spec:
+      initContainers:
+      - name: init
+        image: busybox:1.28
+        command: ['sh', '-c', "ls -lrt /etc/omnidb"]
+        volumeMounts:
+        - name: pv-data
+          mountPath: /etc/omnidb
+          subPath: omnidb        
       containers:
       - name: omnidb
         image: taivokasper/omnidb
