@@ -26,7 +26,7 @@ spec:
       - name: omnidb
         image: taivokasper/omnidb
         ports:
-        - containerPort: 8000
+        - containerPort: 8080
         volumeMounts:
         - name: pv-data
           mountPath: /etc/omnidb
