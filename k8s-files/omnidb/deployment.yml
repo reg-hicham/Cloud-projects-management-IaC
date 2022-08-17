@@ -17,7 +17,7 @@ spec:
       initContainers:
       - name: init
         image: busybox:1.28
-        command: ['sh', '-c', "ls -lrt /etc/omnidb"]
+        command: ['sh', '-c', "ls -lrt /etc"]
         volumeMounts:
         - name: pv-data
           mountPath: /etc/omnidb
