@@ -8,8 +8,8 @@ spec:
   accessModes:
   - ReadWriteMany
   nfs:
-    path: /share1
-    server: 10.171.170.10
+    path: /share2
+    server: 10.175.161.178
     
 ---
 
