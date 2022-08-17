@@ -16,12 +16,12 @@ spec:
     spec:
       containers:
       - name: omnidb
-        image: omnidbteam/omnidb
+        image: taivokasper/omnidb
         ports:
         - containerPort: 8000
         volumeMounts:
         - name: pv-data
-          mountPath: /home/omnidb/.omnidb/omnidb-server
+          mountPath: /etc/omnidb
           subPath: omnidb
       volumes:
       - name: pv-data
