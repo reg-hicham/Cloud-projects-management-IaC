@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: postgres
-        image: postgres:12
+        image: postgres
         envFrom:
         - secretRef:
             name: postgres-configuration
