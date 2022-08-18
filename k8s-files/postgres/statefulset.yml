@@ -46,6 +46,6 @@ spec:
         persistentVolumeClaim:
           claimName: hicham-claim
           readOnly: false
-     - name: "service-account"
+     - name: service-account
         secret:
-          secretName: "my-app-sa-key"
+          secretName: my-app-sa-key
