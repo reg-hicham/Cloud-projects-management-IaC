@@ -15,6 +15,14 @@ spec:
       labels:
         app: postgres
     spec:
+      initContainers:
+      - name: init
+        image: busybox:1.28
+        command: ['sh', '-c', "chmod 777 -R /var/lib/postgresql/data"]
+        volumeMounts:
+        - name: pv-data
+          mountPath: /var/lib/postgresql/data
+          subPath: postgreslatest
       containers:
       - name: postgres
         image: postgres
@@ -24,12 +32,12 @@ spec:
         ports:
         - containerPort: 5432
           name: postgresdb
-        # volumeMounts:
-        # - name: pv-data
-          # mountPath: /var/lib/postgresql/data
-          # subPath: postgres14
-      # volumes:
-      # - name: pv-data
-        # persistentVolumeClaim:
-          # claimName: hicham-claim
-          # readOnly: false
+        volumeMounts:
+        - name: pv-data
+          mountPath: /var/lib/postgresql/data
+          subPath: postgreslatest
+      volumes:
+      - name: pv-data
+        persistentVolumeClaim:
+          claimName: hicham-claim
+          readOnly: false
