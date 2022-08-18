@@ -24,12 +24,12 @@ spec:
           # subPath: omnidbnew       
       containers:
       - name: omnidb
-        image: taivokasper/omnidb
+        image: omnidbteam/omnidb 
         env:
           - name: "GOOGLE_APPLICATION_CREDENTIALS"
             value: "/var/run/secret/cloud.google.com/service-
         ports:
-        - containerPort: 8080
+        - containerPort: 8000
         volumeMounts:
         - name: pv-data
           mountPath: /home/omnidb/.omnidb
