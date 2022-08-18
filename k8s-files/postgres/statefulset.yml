@@ -28,7 +28,7 @@ spec:
         image: postgres
         env:
           - name: "GOOGLE_APPLICATION_CREDENTIALS"
-            value: "/var/run/secret/cloud.google.com/service-
+            value: "/var/run/secret/cloud.google.com/service-account.json"
         envFrom:
         - secretRef:
             name: postgres-configuration

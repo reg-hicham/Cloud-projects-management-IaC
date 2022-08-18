@@ -27,7 +27,7 @@ spec:
         image: omnidbteam/omnidb 
         env:
           - name: "GOOGLE_APPLICATION_CREDENTIALS"
-            value: "/var/run/secret/cloud.google.com/service-
+            value: "/var/run/secret/cloud.google.com/service-account.json"
         ports:
         - containerPort: 8000
         volumeMounts:
