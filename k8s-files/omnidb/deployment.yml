@@ -24,7 +24,7 @@ spec:
           subPath: omnidb        
       containers:
       - name: omnidb
-        image: dev.com/library/omnidb:latest
+        image: omnidbteam/omnidb
         ports:
         - containerPort: 8000
         volumeMounts:
