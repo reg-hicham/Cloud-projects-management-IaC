@@ -17,19 +17,19 @@ spec:
       initContainers:
       - name: init
         image: busybox:1.28
-        command: ['sh', '-c', "chmod 777 -R /home/omnidb/.omnidb"]
+        command: ['sh', '-c', "chmod 777 -R /etc/omnidb"]
         volumeMounts:
         - name: pv-data
-          mountPath: /home/omnidb/.omnidb
+          mountPath: /etc/omnidb  #/home/omnidb/.omnidb
           subPath: omnidb        
       containers:
       - name: omnidb
-        image: omnidbteam/omnidb
+        image: taivokasper/omnidb  #omnidbteam/omnidb
         ports:
         - containerPort: 8000
         volumeMounts:
         - name: pv-data
-          mountPath: /home/omnidb/.omnidb
+          mountPath: /etc/omnidb #/home/omnidb/.omnidb
           subPath: omnidb
       volumes:
       - name: pv-data
