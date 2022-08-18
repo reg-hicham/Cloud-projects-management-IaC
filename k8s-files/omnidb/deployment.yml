@@ -14,25 +14,33 @@ spec:
       labels:
         app: omnidb
     spec:
-      initContainers:
-      - name: init
-        image: busybox:1.28
-        command: ['sh', '-c', "chmod 777 -R /home/omnidb/.omnidb"]
-        volumeMounts:
-        - name: pv-data
-          mountPath: /home/omnidb/.omnidb
-          subPath: omnidbnew       
-      containers:
-      - name: omnidb
-        image: taivokasper/omnidb
-        ports:
-        - containerPort: 8080
+      # initContainers:
+      # - name: init
+        # image: busybox:1.28
+        # command: ['sh', '-c', "chmod 777 -R /home/omnidb/.omnidb"]
         # volumeMounts:
         # - name: pv-data
           # mountPath: /home/omnidb/.omnidb
-          # subPath: omnidbnew
+          # subPath: omnidbnew       
+      containers:
+      - name: omnidb
+        image: taivokasper/omnidb
+        env:
+          - name: "GOOGLE_APPLICATION_CREDENTIALS"
+            value: "/var/run/secret/cloud.google.com/service-
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - name: pv-data
+          mountPath: /home/omnidb/.omnidb
+          subPath: omnidbnew1
+        - name: "service-account"
+          mountPath: "/var/run/secret/cloud.google.com"
       volumes:
       - name: pv-data
         persistentVolumeClaim:
           claimName: hicham-claim-omnidb
           readOnly: false
+      - name: "service-account"
+        secret:
+          secretName: "my-app-sa-key"
