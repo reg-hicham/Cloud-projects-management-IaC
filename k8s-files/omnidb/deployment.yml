@@ -32,7 +32,7 @@ spec:
         - containerPort: 8000
         volumeMounts:
         - name: pv-data
-          mountPath: /home/omnidb/.omnidb
+          mountPath: "/home/omnidb/.omnidb"
           subPath: omnidbnew1
         - name: "service-account"
           mountPath: "/var/run/secret/cloud.google.com"
