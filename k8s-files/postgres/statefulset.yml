@@ -39,8 +39,8 @@ spec:
         - name: pv-data
           mountPath: /var/lib/postgresql/data
           subPath: postgreslatest
-        - name: "service-account"
-          mountPath: "/var/run/secret/cloud.google.com"
+        - name: service-account
+          mountPath: /var/run/secret/cloud.google.com
       volumes:
       - name: pv-data
         persistentVolumeClaim:
