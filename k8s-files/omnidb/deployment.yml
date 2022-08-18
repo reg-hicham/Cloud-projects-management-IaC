@@ -27,10 +27,10 @@ spec:
         image: taivokasper/omnidb
         ports:
         - containerPort: 8080
-        volumeMounts:
-        - name: pv-data
-          mountPath: /home/omnidb/.omnidb
-          subPath: omnidbnew
+        # volumeMounts:
+        # - name: pv-data
+          # mountPath: /home/omnidb/.omnidb
+          # subPath: omnidbnew
       volumes:
       - name: pv-data
         persistentVolumeClaim:
