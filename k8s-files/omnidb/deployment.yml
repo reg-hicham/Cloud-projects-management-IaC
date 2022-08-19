@@ -32,8 +32,11 @@ spec:
         - containerPort: 8080
         volumeMounts:
         - name: pv-data
-          mountPath: /var/lib/postgresql/data #/home/omnidb/.omnidb
+          mountPath: /home/omnidb/.omnidb
           subPath: omnidbnew1
+        - name: pv-data
+          mountPath: /etc/omnidb
+          subPath: omnidbnew2
         # - name: service-account
           # mountPath: /var/run/secret/cloud.google.com
       volumes:
