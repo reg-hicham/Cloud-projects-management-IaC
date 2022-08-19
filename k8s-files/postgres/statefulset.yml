@@ -26,9 +26,9 @@ spec:
       containers:
       - name: postgres
         image: postgres
-        env:
-          - name: "GOOGLE_APPLICATION_CREDENTIALS"
-            value: "/var/run/secret/cloud.google.com/service-account.json"
+        # env:
+          # - name: "GOOGLE_APPLICATION_CREDENTIALS"
+            # value: "/var/run/secret/cloud.google.com/service-account.json"
         envFrom:
         - secretRef:
             name: postgres-configuration
@@ -39,8 +39,8 @@ spec:
         - name: pv-data
           mountPath: /var/lib/postgresql/data
           subPath: postgreslatest
-        - name: service-account
-          mountPath: /var/run/secret/cloud.google.com
+        # - name: service-account
+          # mountPath: /var/run/secret/cloud.google.com
       volumes:
       - name: pv-data
         persistentVolumeClaim:
