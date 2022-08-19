@@ -14,14 +14,14 @@ spec:
       labels:
         app: omnidb
     spec:
-      # initContainers:
-      # - name: init
-        # image: busybox:1.28
-        # command: ['sh', '-c', "chmod 777 -R /home/omnidb/.omnidb"]
-        # volumeMounts:
-        # - name: pv-data
-          # mountPath: /home/omnidb/.omnidb
-          # subPath: omnidbnew       
+      initContainers:
+      - name: init
+        image: busybox:1.28
+        command: ['sh', '-c', "chmod 777 -R /etc/omnidb"]
+        volumeMounts:
+        - name: pv-data
+          mountPath: /etc/omnidb
+          subPath: omnidbnew2       
       containers:
       - name: omnidb
         image: taivokasper/omnidb
@@ -34,9 +34,9 @@ spec:
         - name: pv-data
           mountPath: /home/omnidb/.omnidb
           subPath: omnidbnew1
-        # - name: pv-data
-          # mountPath: /etc/omnidb
-          # subPath: omnidbnew2
+        - name: pv-data
+          mountPath: /etc/omnidb
+          subPath: omnidbnew2
         - name: service-account
           mountPath: /var/run/secret/cloud.google.com
       volumes:
