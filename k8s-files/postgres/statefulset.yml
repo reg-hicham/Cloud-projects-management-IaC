@@ -15,20 +15,9 @@ spec:
       labels:
         app: postgres
     spec:
-      # initContainers:
-      # - name: init
-        # image: busybox:1.28
-        # command: ['sh', '-c', "chmod 777 -R /var/lib/postgresql/data"]
-        # volumeMounts:
-        # - name: pv-data
-          # mountPath: /var/lib/postgresql/data
-          # subPath: postgreslatest
       containers:
       - name: postgres
         image: postgres
-        # env:
-          # - name: "GOOGLE_APPLICATION_CREDENTIALS"
-            # value: "/var/run/secret/cloud.google.com/service-account.json"
         envFrom:
         - secretRef:
             name: postgres-configuration
@@ -39,13 +28,8 @@ spec:
         - name: pv-data
           mountPath: /var/lib/postgresql/data
           subPath: postgreslatest
-        # - name: service-account
-          # mountPath: /var/run/secret/cloud.google.com
       volumes:
       - name: pv-data
         persistentVolumeClaim:
           claimName: hicham-claim
           readOnly: false
-     - name: service-account
-        secret:
-          secretName: my-app-sa-key

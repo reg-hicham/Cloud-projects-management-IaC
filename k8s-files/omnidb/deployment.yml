@@ -25,9 +25,7 @@ spec:
       containers:
       - name: omnidb
         image: taivokasper/omnidb
-        env:
-          - name: "GOOGLE_APPLICATION_CREDENTIALS"
-            value: "/var/run/secret/cloud.google.com/service-account.json"
+
         ports:
         - containerPort: 8080
         volumeMounts:
@@ -37,8 +35,6 @@ spec:
         - name: pv-config
           mountPath: /etc/omnidb
           subPath: omnidbnew2
-        - name: service-account
-          mountPath: /var/run/secret/cloud.google.com
       volumes:
       - name: pv-data
         persistentVolumeClaim:
@@ -48,6 +44,3 @@ spec:
         persistentVolumeClaim:
           claimName: hicham-claim-omnidb2
           readOnly: false
-      - name: service-account
-        secret:
-          secretName: my-app-sa-key
