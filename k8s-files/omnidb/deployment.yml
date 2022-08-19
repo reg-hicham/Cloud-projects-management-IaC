@@ -34,7 +34,7 @@ spec:
         - name: pv-data
           mountPath: /home/omnidb/.omnidb
           subPath: omnidbnew1
-        - name: pv-data
+        - name: pv-config
           mountPath: /etc/omnidb
           subPath: omnidbnew2
         - name: service-account
@@ -43,6 +43,10 @@ spec:
       - name: pv-data
         persistentVolumeClaim:
           claimName: hicham-claim-omnidb
+          readOnly: false
+      - name: pv-config
+        persistentVolumeClaim:
+          claimName: hicham-claim-omnidb2
           readOnly: false
       - name: service-account
         secret:
